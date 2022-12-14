@@ -1,0 +1,96 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+.card ul {
+  width: 200px;
+  height: 100%;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, .5);
+  margin: 1.1rem 1.1rem 5rem 1.1rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.card ul {
+  cursor: pointer;
+  transition: .3s;
+}
+
+.card ul:hover {
+
+}
+
+.card ul li.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  font-size: .8rem;
+  margin-bottom: 10px;
+}
+
+.card ul li.flex span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.card ul img {
+  width: 100px;
+  margin-top: -100px;
+}
+/*    modal    */
+
+.moda-container {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  opacity: 0;
+  animation: modal .5s ease forwards;
+}
+
+@keyframes modal {
+  from{
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+}
+
+.container {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .5);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  width: 800px;
+  max-width: 60%;
+  min-height: 500px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+}
