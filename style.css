@@ -61,7 +61,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: block;
+  display: none;
   opacity: 0;
   animation: modal .5s ease forwards;
 }
@@ -93,4 +93,21 @@
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+}
+
+.modal {
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.modal h2 {
+  margin: 30px;
+}
+
+.elementos {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px solid red;
 }

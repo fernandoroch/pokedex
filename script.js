@@ -1,6 +1,7 @@
 const ulElements = document.querySelector('.card')
 const modal = document.querySelector('.moda-container')
 const modalContainer = document.querySelector('.container')
+const atributosModal = document.querySelector('.atributos')
 
 let jsonArray = []
 
@@ -13,6 +14,7 @@ function executarRepeticao(){
 }
 executarRepeticao()
 
+/*  Fazendo requisição dos dados da API */
 async function requisicao(i){
   let url =`https://pokeapi.co/api/v2/pokemon/${i}`
 
@@ -26,11 +28,11 @@ async function requisicao(i){
    
 }
 
+/*   Adicionando os elementos do html */
 function manipularDom() {
-
   jsonArray.forEach((e, index) => {
     ulElements.innerHTML += `
-    <ul onclick="mostraModal()">
+    <ul onclick="mostraModal(${index})">
      <li><img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${e.id}.png"></img></li>
      <li class="cards flex"><h2>${e.name}</h2><span>#${e.id}</span></li>
      <li class="cards flex"><h2>Species:</h2><span>${e.species.name}</span></li>
@@ -38,11 +40,11 @@ function manipularDom() {
     </ul>
    `
   })
-  console.log(jsonArray);
   estilizar()
-  atributos()
+  console.log(jsonArray);
 }
 
+/*   Estilizando os cards   */
 function estilizar() {
   let ulEstilizar = document.querySelectorAll('.card ul')
   
@@ -65,10 +67,30 @@ function estilizar() {
     }
 
   })
+  
 }
 
-function mostraModal() {
-  atributos()
+/*    Abrir e fechar modal de atributos   */
+
+function mostraModal(e) {
+  jsonArray[e].stats.forEach((item, index) => {
+    atributosModal.innerHTML += `
+   <div class="elementos">
+    <div class="hp">23</div>
+    <div class="value">24</div>
+    <div class="porcentagem">25</div>
+   </div>
+  `
+  })
+
+  atributosModal.innerHTML += `
+   <div class="elementos">
+    <div class="cp">total CP</div>
+    <div class="value">24</div>
+    <div class="porcentagem">%</div>
+   </div>
+  `
+
   modal.style.display = 'block'
 }
 
@@ -76,21 +98,6 @@ function fecharModal(e){
   if(e.target === this) {
     modal.style.display = 'none'
   }
-}
-
-function atributos(){
-  let attributes = []
-  jsonArray.forEach((e, index) => {
-    let now = jsonArray[index].stats.map((e) => {
-      return {
-        name: e.stat.name,
-        valor:  e.base_stat
-      }
-    })
-    attributes.push(now)
-  })
-  
-  console.log(attributes);
 }
 
 modalContainer.addEventListener('click', fecharModal)
