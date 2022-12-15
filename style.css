@@ -5,6 +5,15 @@
   font-family: 'Courier New', Courier, monospace;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
+  margin-bottom: 5rem;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, .5);border-radius: 4px 4px 20px 20px;
+}
+
 .card {
   display: flex;
   flex-wrap: wrap;
@@ -46,6 +55,7 @@
 .card ul li.flex span {
   font-size: 1rem;
   font-weight: 500;
+  
 }
 
 .card ul img {
@@ -88,26 +98,65 @@
 
 .modal {
   width: 800px;
-  max-width: 60%;
-  min-height: 500px;
+  width: min(100% - 10px, 800px);
+  margin-inline: auto;
+  margin: 10px;
   background-color: white;
   border-radius: 6px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, .5);
+  padding: 30px 20px;
+  position: relative;
 }
 
-.modal {
-  margin: 10px auto;
+.modal-content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
 .modal h2 {
-  margin: 30px;
+  margin: 0px auto 20px auto;
+  
+}
+
+.modal .fechar-modal {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  padding: 15px;
+  border-radius: 5px;
 }
 
 .elementos {
-  display: flex;
-  justify-content: center;
-  padding: 1rem;
-  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 35% 15% 50%;
+  padding: .5rem 0 .5rem 0;
+  font-weight: 600;
 }
+
+.elementos .porcentagem {
+  background-color: gray;
+  height: 5px;
+  border-radius: 10px;
+}
+
+.elementos .porcentagem div {
+  height: 100%;
+  border-radius: 10px;
+  background-color: blue;
+}
+
+.elementos li.total {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.elementos .porcentagem div.p-total {
+  height: 100%;
+  border-radius: 10px;
+  background-color: red;
+}
+

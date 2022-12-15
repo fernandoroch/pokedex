@@ -1,5 +1,6 @@
 const ulElements = document.querySelector('.card')
 const modal = document.querySelector('.moda-container')
+const buttonFecharModal = document.querySelector('.fechar-modal')
 const modalContainer = document.querySelector('.container')
 const atributosModal = document.querySelector('.atributos')
 
@@ -34,9 +35,9 @@ function manipularDom() {
     ulElements.innerHTML += `
     <ul onclick="mostraModal(${index})">
      <li><img class="img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${e.id}.png"></img></li>
-     <li class="cards flex"><h2>${e.name}</h2><span>#${e.id}</span></li>
-     <li class="cards flex"><h2>Species:</h2><span>${e.species.name}</span></li>
-     <li class="cards flex"><h2>Types:</h2><span>${e.types.map((item) => item.type.name).join('|')}</span></li>
+     <li class="cards flex " ><h2>${e.name}</h1><span>#${e.id}</span></li>
+     <li class="cards flex"><h3>Species:</h3><span>${e.species.name}</span></li>
+     <li class="cards flex"><h3>Types:</h3><span>${e.types.map((item) => item.type.name).join('|')}</span></li>
     </ul>
    `
   })
@@ -73,22 +74,36 @@ function estilizar() {
 /*    Abrir e fechar modal de atributos   */
 
 function mostraModal(e) {
+  let total = []
   jsonArray[e].stats.forEach((item, index) => {
+    let largura = () => {
+     return Math.floor((item.base_stat / 200) * 100) 
+    }
+    console.log(largura());
+    total.push(item.base_stat)
     atributosModal.innerHTML += `
-   <div class="elementos">
-    <div class="hp">23</div>
-    <div class="value">24</div>
-    <div class="porcentagem">25</div>
-   </div>
+   <ul class="elementos">
+    <li class="hp">${item.stat.name}</li>
+    <li class="value">${item.base_stat}</li>
+    <li class="porcentagem"><div style="width:${largura()}%"></div></li>
+   </ul>
   `
   })
 
+  let cpTotal = total.reduce((acumulador, atual) => {
+    return acumulador + atual
+  })
+
+  let cpTotalLargura = () => {
+    return Math.floor((cpTotal / 800) * 100) 
+   }
+
   atributosModal.innerHTML += `
-   <div class="elementos">
-    <div class="cp">total CP</div>
-    <div class="value">24</div>
-    <div class="porcentagem">%</div>
-   </div>
+   <ul class="elementos">
+    <li class="total">total CP</li>
+    <li class="total">${cpTotal}</li>
+    <li class="porcentagem"><div class="p-total" style="width:${cpTotalLargura()}%"></div></li>
+   </ul>
   `
 
   modal.style.display = 'block'
@@ -97,10 +112,12 @@ function mostraModal(e) {
 function fecharModal(e){
   if(e.target === this) {
     modal.style.display = 'none'
+    atributosModal.innerHTML = ''
   }
+  
 }
 
 modalContainer.addEventListener('click', fecharModal)
-
+buttonFecharModal.addEventListener('click', fecharModal)
 
 
