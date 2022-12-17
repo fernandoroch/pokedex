@@ -11,7 +11,32 @@
   justify-content: center;
   padding: 40px 0;
   margin-bottom: 5rem;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, .5);border-radius: 4px 4px 20px 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, .2);
+  border-radius: 4px 4px 20px 20px;
+}
+
+.pesquisa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+#pesquisando {
+  font-size: 1.2rem;
+  width: min(100% - 5px, 400px);
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .2);
+  outline: none;
+  overflow: hidden;
+
+}
+
+.pesquisa img {
+  margin-left: -25px;
+  opacity: .3;
 }
 
 .card {
@@ -24,7 +49,7 @@
 .card ul {
   width: 200px;
   height: 100%;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, .5);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .3);
   margin: 1.1rem 1.1rem 5rem 1.1rem;
   padding: 20px;
   display: flex;
@@ -32,6 +57,10 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+}
+
+.searchElements li h2 {
+  text-transform: capitalize;
 }
 
 .card ul {
@@ -69,6 +98,7 @@
   background-color: rgba(0, 0, 0, .5);
   top: 0;
   left: 0;
+  z-index: 300;
   width: 100vw;
   height: 100vh;
   display: none;
